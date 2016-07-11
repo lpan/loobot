@@ -1,6 +1,12 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "extends": "eslint:recommended",
   "env": {
     "jest": true,
     "node": true
