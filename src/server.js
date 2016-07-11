@@ -1,6 +1,7 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import {sendMessage} from './utils/facebookApi';
+import {FB_VERIFY} from './constants/FacebookConstants';
 
 import respond from './respond/entry';
 
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/webhook/', (req, res) => {
-  if (req.query['hub.verify_token'] === 'rob_the_r_score_god') {
+  if (req.query['hub.verify_token'] === FB_VERIFY) {
     res.send(req.query['hub.challenge']);
   }
 
