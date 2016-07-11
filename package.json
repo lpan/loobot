@@ -4,7 +4,8 @@
   "description": "Chatbot interface for UWaterloo Open Data API",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
   "devDependencies": {
     "eslint": "^3.0.1",
     "eslint-plugin-import": "^1.10.2",
-    "jest": "^13.2.3"
+    "jest": "^13.2.3",
+    "nodemon": "^1.9.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1",
