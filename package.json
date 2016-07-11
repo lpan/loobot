@@ -1,0 +1,26 @@
+{
+  "name": "loobot",
+  "version": "0.0.0",
+  "description": "Chatbot interface for UWaterloo Open Data API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lpan/loobot.git"
+  },
+  "keywords": [
+    "chatbot",
+    "waterloo",
+    "university",
+    "nlp",
+    "messenger"
+  ],
+  "author": "Lawrence Pan <lawrencefeipan@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/lpan/loobot/issues"
+  },
+  "homepage": "https://github.com/lpan/loobot#readme"
+}
