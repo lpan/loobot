@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import {sendMessage} from './utils/facebookApi';
 import {FB_VERIFY} from './constants/FacebookConstants';
 
-import respond from './respond/entry';
+import respond from './response/respond';
 
 const SERVER_PORT = 2121;
 const app = new Express();
