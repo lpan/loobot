@@ -1,14 +1,14 @@
 import request from 'request';
 import {FB_URL, FB_TOKEN} from '../constants/FacebookConstants';
 
-function formatResponse(sender, message) {
+function formatResponse(sender, text) {
   return {
     url: FB_URL,
     qs: {access_token: FB_TOKEN},
     method: 'POST',
     json: {
       recipient: {id: sender},
-      message: {message},
+      message: {text},
     },
   };
 }
@@ -22,7 +22,8 @@ export function sendMessage(sender, text, respond) {
     }
     
     if (response.body.error) {
-      console.error(`Error: ${response.body.error}`);
+      console.error(response.body.error);
+      console.error('Response error: check function sendMessage');
     }
   });
 }

@@ -31,9 +31,9 @@ app.post('/webhook/', (req, res) => {
       const {text} = event.message;
 
       sendMessage(sender, text.substring(0, 200), respond);
-
-      res.sendStatus(200);
     }
+
+    res.sendStatus(200);
   });
 });
 
