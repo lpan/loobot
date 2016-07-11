@@ -2,6 +2,8 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import {sendMessage} from './utils/facebookApi';
 
+import respond from './respond/entry';
+
 const SERVER_PORT = 2121;
 const app = new Express();
 
@@ -27,7 +29,7 @@ app.post('/webhook/', (req, res) => {
     if (event.message && event.message.text) {
       const {text} = event.message;
 
-      sendMessage(sender, text.substring(0, 200));
+      sendMessage(sender, text.substring(0, 200), respond);
 
       res.sendStatus(200);
     }
