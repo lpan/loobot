@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const {sendMessage} = require('./utils/facebookApi');
+const {sendMessage} = require('./api/facebookApi');
 const {FB_VERIFY} = require('./constants/FacebookConstants');
 
 const respond = require('./response/respond');
