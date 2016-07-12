@@ -4,15 +4,16 @@ const {FB_URL, FB_TOKEN} = require('../constants/FacebookConstants');
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
-  } else {
-    const error = new Error(response.statusText);
-    error.response = response;
-    throw error;
   }
+
+  throw new Error(response.statusText);
 }
 
-function formatResponse(sender, text) {
+function formatOptions(sender, text) {
   return {
+    headers: {
+      'Content-Type': 'application/json',
+    },
     method: 'POST',
     body: JSON.stringify({
       recipient: {id: sender},
@@ -26,7 +27,7 @@ function sendMessage(sender, text, respond) {
 
   fetch(
     `${FB_URL}?access_token=${FB_TOKEN}`,
-    formatResponse(sender, message)
+    formatOptions(sender, message)
   )
     .then(checkStatus)
     .catch(error => console.error(`Request failed: ${error}`));
