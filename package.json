@@ -35,11 +35,13 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "ramda": "^0.21.0"
   },
   "jest": {
     "unmockedModulePathPatterns": [
-      "./src/constants/*"
+      "./src/constants/*",
+      "./src/utils/requestUtils"
     ]
   }
 }

@@ -5,7 +5,7 @@ jest.mock('isomorphic-fetch', () => jest.fn(
 
 const fetch = require('isomorphic-fetch');
 const {sendMessage} = require('../facebookApi');
-const {FB_URL, FB_TOKEN} = require('../../constants/FacebookConstants');
+const {FB_URL, FB_TOKEN} = require('../../constants/ApiConstants');
 
 describe('facebook API utils', () => {
 

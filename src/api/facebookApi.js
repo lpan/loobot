@@ -1,13 +1,6 @@
 const fetch = require('isomorphic-fetch');
-const {FB_URL, FB_TOKEN} = require('../constants/FacebookConstants');
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  throw new Error(response.statusText);
-}
+const {FB_URL, FB_TOKEN} = require('../constants/ApiConstants');
+const {checkStatus, onRequestError} = require('../utils/requestUtils');
 
 function formatOptions(sender, text) {
   return {
@@ -30,7 +23,7 @@ function sendMessage(sender, text, respond) {
     formatOptions(sender, message)
   )
     .then(checkStatus)
-    .catch(error => console.error(`Request failed: ${error}`));
+    .catch(onRequestError);
 }
 
 module.exports = {
