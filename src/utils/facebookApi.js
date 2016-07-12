@@ -1,5 +1,5 @@
-import request from 'request';
-import {FB_URL, FB_TOKEN} from '../constants/FacebookConstants';
+const request = require('request');
+const {FB_URL, FB_TOKEN} = require('../constants/FacebookConstants');
 
 function formatResponse(sender, text) {
   return {
@@ -13,7 +13,7 @@ function formatResponse(sender, text) {
   };
 }
 
-export function sendMessage(sender, text, respond) {
+function sendMessage(sender, text, respond) {
   const message = respond(sender, text);
 
   request(formatResponse(sender, message), (error, response) => {
@@ -27,3 +27,7 @@ export function sendMessage(sender, text, respond) {
     }
   });
 }
+
+module.exports = {
+  sendMessage,
+};

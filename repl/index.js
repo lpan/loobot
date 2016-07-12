@@ -1,8 +1,5 @@
-require('babel-core/register');
-require('babel-polyfill');
-
 const repl = require('repl');
-const respond = require('../src/response/respond').default;
+const respond = require('../src/response/respond');
 
 const SENDER = '1234567890';
 

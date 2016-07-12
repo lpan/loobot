@@ -1,12 +1,12 @@
-import Express from 'express';
-import bodyParser from 'body-parser';
-import {sendMessage} from './utils/facebookApi';
-import {FB_VERIFY} from './constants/FacebookConstants';
+const express = require('express');
+const bodyParser = require('body-parser');
+const {sendMessage} = require('./utils/facebookApi');
+const {FB_VERIFY} = require('./constants/FacebookConstants');
 
-import respond from './response/respond';
+const respond = require('./response/respond');
 
 const SERVER_PORT = 2121;
-const app = new Express();
+const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
