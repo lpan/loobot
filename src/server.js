@@ -37,4 +37,4 @@ app.post('/webhook/', (req, res) => {
   });
 });
 
-app.listen(SERVER_PORT);
+app.listen(SERVER_PORT, () => console.error(`server running on ${SERVER_PORT}`));
