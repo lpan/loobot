@@ -20,6 +20,9 @@ describe('facebook API utils', () => {
 
       expect(fetch).toBeCalledWith(
         `${FB_URL}?access_token=${FB_TOKEN}`, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
           method: 'POST',
           body: JSON.stringify({
             recipient: {id: sender},
@@ -30,4 +33,5 @@ describe('facebook API utils', () => {
     });
     
   });
+
 });
