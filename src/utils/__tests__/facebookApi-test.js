@@ -1,8 +1,11 @@
 jest.unmock('../facebookApi');
+jest.mock('isomorphic-fetch', () => jest.fn(
+  () => Promise.resolve({status: 200})
+));
 
-import request from 'request';
-import {sendMessage} from '../facebookApi';
-import {FB_URL, FB_TOKEN} from '../../constants/FacebookConstants';
+const fetch = require('isomorphic-fetch');
+const {sendMessage} = require('../facebookApi');
+const {FB_URL, FB_TOKEN} = require('../../constants/FacebookConstants');
 
 describe('facebook API utils', () => {
 
@@ -15,17 +18,14 @@ describe('facebook API utils', () => {
 
       sendMessage(sender, text, respond);
 
-      expect(request).toBeCalledWith(
-        {
-          url: FB_URL,
-          qs: {access_token: FB_TOKEN},
+      expect(fetch).toBeCalledWith(
+        `${FB_URL}?access_token=${FB_TOKEN}`, {
           method: 'POST',
-          json: {
+          body: JSON.stringify({
             recipient: {id: sender},
             message: {text},
-          },
-        },
-        jest.fn()
+          }),
+        }
       );
     });
     

@@ -1,31 +1,35 @@
-const request = require('request');
+const fetch = require('isomorphic-fetch');
 const {FB_URL, FB_TOKEN} = require('../constants/FacebookConstants');
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    const error = new Error(response.statusText);
+    error.response = response;
+    throw error;
+  }
+}
 
 function formatResponse(sender, text) {
   return {
-    url: FB_URL,
-    qs: {access_token: FB_TOKEN},
     method: 'POST',
-    json: {
+    body: JSON.stringify({
       recipient: {id: sender},
       message: {text},
-    },
+    }),
   };
 }
 
 function sendMessage(sender, text, respond) {
   const message = respond(sender, text);
 
-  request(formatResponse(sender, message), (error, response) => {
-    if (error) {
-      console.error(`Error sending message: ${error}`);
-    }
-    
-    if (response.body.error) {
-      console.error(response.body.error);
-      console.error('Response error: check function sendMessage');
-    }
-  });
+  fetch(
+    `${FB_URL}?access_token=${FB_TOKEN}`,
+    formatResponse(sender, message)
+  )
+    .then(checkStatus)
+    .catch(error => console.error(`Request failed: ${error}`));
 }
 
 module.exports = {
