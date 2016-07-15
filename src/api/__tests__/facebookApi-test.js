@@ -11,10 +11,13 @@ describe('facebook API utils', () => {
 
   describe('sendMessage()', () => {
 
-    it('calls request with correct options', () => {
+    it('calls request with correct options', (done) => {
       const sender = '12345';
       const text = 'o shit waddup';
-      const respond = jest.fn((id, message) => message);
+      const respond = jest.fn((id, message) => {
+        done();
+        return Promise.resolve(message);
+      });
 
       sendMessage(sender, text, respond);
 
