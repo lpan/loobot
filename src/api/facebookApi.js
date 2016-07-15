@@ -15,15 +15,21 @@ function formatOptions(sender, text) {
   };
 }
 
-function sendMessage(sender, text, respond) {
-  const message = respond(sender, text);
-
+function callFbApi(sender, message) {
   fetch(
     `${FB_URL}?access_token=${FB_TOKEN}`,
     formatOptions(sender, message)
   )
     .then(checkStatus)
     .catch(onRequestError);
+}
+
+function sendMessage(sender, text, respond) {
+  const promise = respond(sender, text)
+    .then(response => callFbApi(sender, response))
+    .catch(error => callFbApi(sender, error));
+  
+  return promise;
 }
 
 module.exports = {
