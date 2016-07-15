@@ -22,7 +22,7 @@ app.get('/webhook/', (req, res) => {
 });
 
 app.post('/webhook/', (req, res) => {
-  const {messaging} = req.body.entry[0];
+  const [{messaging}] = req.body.entry;
 
   messaging.forEach(event => {
     const sender = event.sender.id;
