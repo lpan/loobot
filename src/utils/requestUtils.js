@@ -7,7 +7,7 @@ function checkStatus(response) {
 }
 
 function onRequestError(error) {
-  console.error(`Request failed, ${error}`);
+  console.error(`Request failed, ${JSON.stringify(error)}`);
 }
 
 function parseJSON(response) {
