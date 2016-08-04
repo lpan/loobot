@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch');
-const {FB_URL, FB_TOKEN} = require('../constants/ApiConstants');
-const {checkStatus, onRequestError} = require('../utils/requestUtils');
+const {URL, ACCESS_TOKEN} = require('./constants');
+const {checkStatus, onRequestError} = require('../../utils/requestUtils');
 
 function formatOptions(sender, text) {
   return {
@@ -17,7 +17,7 @@ function formatOptions(sender, text) {
 
 function callFbApi(sender, message) {
   fetch(
-    `${FB_URL}?access_token=${FB_TOKEN}`,
+    `${URL}?access_token=${ACCESS_TOKEN}`,
     formatOptions(sender, message)
   )
     .then(checkStatus)
@@ -32,6 +32,4 @@ function sendMessage(sender, text, respond) {
   return promise;
 }
 
-module.exports = {
-  sendMessage,
-};
+module.exports = sendMessage;

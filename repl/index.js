@@ -1,5 +1,5 @@
 const repl = require('repl');
-const respond = require('../src/response/respond');
+const respond = require('../src/respond');
 
 const SENDER = '1234567890';
 
