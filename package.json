@@ -29,7 +29,7 @@
   "devDependencies": {
     "eslint": "^3.0.1",
     "eslint-plugin-import": "^1.10.2",
-    "jest-cli": "^13.2.3",
+    "jest-cli": "^14.0.0",
     "nodemon": "^1.9.2"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
   },
   "jest": {
     "unmockedModulePathPatterns": [
-      "./src/constants/*",
+      "./src/server/messenger/constants",
       "./src/utils/requestUtils"
     ]
   }
