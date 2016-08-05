@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const respond = require('../respond');
 
-const {verifyWebhook, handleMessage} = require('./messenger/handlers');
+const {verifyWebhook, handleMessage} = require('./messenger');
 
 const SERVER_PORT = 2121;
 const app = express();

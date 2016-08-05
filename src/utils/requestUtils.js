@@ -1,4 +1,4 @@
-function checkStatus(response) {
+const checkStatus = response => {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -6,17 +6,12 @@ function checkStatus(response) {
   throw new Error(response.statusText);
 }
 
-function onRequestError(error) {
+const onRequestError = error =>
   console.error(`Request failed, ${JSON.stringify(error)}`);
-}
 
-function parseJSON(response) {
-  return response.json()
-}
+const parseJSON = response => response.json();
 
-function extractData({data}) {
-  return data;
-}
+const extractData = ({data}) => data;
 
 
 module.exports = {
